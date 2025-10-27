@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Folder Name="/github/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="src\StainedGlass\StainedGlass.csproj" Type="Classic C#" />
+</Solution>
