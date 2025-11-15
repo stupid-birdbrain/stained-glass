@@ -33,6 +33,11 @@ public unsafe struct SdlWindow : IDisposable {
         set => SDL.SetWindowTitle(_window, value.ToString());
     }
     
+    public readonly (uint width, uint height) GetDrawableSize() {
+        SDL.GetWindowSize(_window, out int w, out int h);
+        return ((uint)Math.Max(0, w), (uint)Math.Max(0, h));
+    }
+    
     public nint CreateVulkanSurface(nint vulkanInstance) {
         nint allocator = 0;
         bool success = SDL.VulkanCreateSurface(_window, vulkanInstance, allocator, out var surfacePointer);
