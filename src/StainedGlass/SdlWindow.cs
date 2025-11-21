@@ -1,4 +1,5 @@
 ﻿using SDL3;
+using System.Numerics;
 
 namespace StainedGlass;
 
@@ -36,6 +37,14 @@ public unsafe struct SdlWindow : IDisposable {
     public readonly (uint width, uint height) GetDrawableSize() {
         SDL.GetWindowSize(_window, out int w, out int h);
         return ((uint)Math.Max(0, w), (uint)Math.Max(0, h));
+    }
+
+    public void SetRelativeMouseMode(bool @true) {
+        SDL.SetWindowRelativeMouseMode(_window, @true);
+    }
+
+    public void SetPosition(Vector2 position) {
+        SDL.SetWindowPosition(_window, (int)position.X, (int)position.Y);
     }
     
     public nint CreateVulkanSurface(nint vulkanInstance) {
