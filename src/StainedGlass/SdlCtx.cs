@@ -37,6 +37,8 @@ public sealed unsafe class SdlCtx : IDisposable {
         return poll;
     }
 
+    public KeyboardState GetKeyboardState() => new();
+
     public string[] GetVulkanExtensions() {
         var extensionNames = SDL.VulkanGetInstanceExtensions(out _);
         Debug.Assert(extensionNames != null);
